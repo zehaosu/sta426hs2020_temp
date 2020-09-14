@@ -1,0 +1,35 @@
+---
+title: "Log-normal distribution"
+author: "Zehao Su"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Definition
+A random variable $X$ follows a log-normal distribution with parameters $\mu$ and $\sigma$ if its pdf is
+$$
+  f(x)=\frac{1}{x\sigma\sqrt{2\pi}}\exp\left(-\frac{(\ln x-\mu)^{2}}{2\sigma^{2}}\right).
+$$
+
+## Sample from a log-normal distribution
+
+We now take a ramdom sample of size 100 from a log-normal distribution with paramaters $\mu=1$, $\sigma=0.25$.
+
+```{r sample}
+  x <- rlnorm(100, 1, 0.25)
+```
+
+Plotting the histogram of this sample on the original scale and the log scale.
+
+```{r plot}
+  par(mfrow = c(1, 2))
+  hist(x); hist(log(x))
+  par(mfrow = c(1, 1))
+```
+
+## Mean and variance of the sample
+
+The mean and variance of the sample `x` are `r mean(x)` and `r var(x)`, respectively.
